@@ -101,9 +101,11 @@ dl .res dd{color:var(--sand-d)}
 @media (max-width:820px){.how{grid-template-columns:1fr;gap:26px}.ans{border-left:0;border-top:1px solid var(--sand);padding:20px 0 0}}
 
 .reel{display:flex;gap:20px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x proximity}
-.ph{flex:0 0 190px;aspect-ratio:9/16;background:#EFEFEF;display:grid;place-items:center;text-align:center;color:var(--mut);padding:14px;scroll-snap-align:start;position:relative}
+.ph{text-decoration:none;color:var(--ink);flex:0 0 230px;border:1px solid var(--line);border-radius:28px;aspect-ratio:9/16;background:var(--sand-l);display:grid;place-items:center;text-align:center;color:var(--mut);padding:14px;scroll-snap-align:start;position:relative}
 .ph b{display:block;font-family:var(--fi);font-weight:400;font-size:1.5rem;color:var(--ink)}
-.ph::after{content:"";position:absolute;left:14px;bottom:14px;width:26px;height:1px;background:var(--sand)}
+.ph small{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-d);margin-bottom:10px}
+.ph .go{display:block;margin-top:14px;color:var(--sand-d);font-size:1.2rem}
+.ph:hover{border-color:var(--sand-d)}
 
 .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--ink);margin-top:40px}
 .svc article{padding:22px 26px 22px 0}
@@ -246,10 +248,9 @@ form .invalid{border-color:var(--sand-d)}
     <p class="tag up"><b>05</b><i></i>Mis piezas</p>
     <h2 class="big" style="margin-bottom:40px">Lo que he <em>creado</em>.</h2>
     <div class="reel">
-      <div class="ph"><div><b>Vídeo 1</b>Tu pieza aquí</div></div>
-      <div class="ph"><div><b>Vídeo 2</b>Tu pieza aquí</div></div>
-      <div class="ph"><div><b>Vídeo 3</b>Tu pieza aquí</div></div>
-      <div class="ph"><div><b>Vídeo 4</b>Tu pieza aquí</div></div>
+      <a class="ph" href="https://vm.tiktok.com/ZN8yVg9JF/" target="_blank" rel="noopener"><div><small>01 · TikTok</small><b>Ver en TikTok</b><span class="go">↗</span></div></a>
+          <a class="ph" href="https://www.instagram.com/reel/DfErWIKs8Zc/" target="_blank" rel="noopener"><div><small>02 · Instagram</small><b>Ver en Instagram</b><span class="go">↗</span></div></a>
+          <a class="ph" href="https://vm.tiktok.com/ZN8yVyHTs/" target="_blank" rel="noopener"><div><small>03 · TikTok</small><b>Ver en TikTok</b><span class="go">↗</span></div></a>
     </div>
   </div></section>
 
