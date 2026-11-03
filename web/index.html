@@ -403,9 +403,9 @@ form.addEventListener('submit',function(e){
   sendBtn.disabled=true;st.textContent='Enviando…';
   fetch('https://formsubmit.co/ajax/'+CONTACT.email,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({name:f.name.value.trim(),email:f.email.value.trim(),message:f.message.value.trim(),_subject:'Nuevo mensaje desde tu portfolio',_captcha:'false',_template:'table'})})
-  .then(function(r){return r.json().then(function(j){if(!r.ok||j.success==='false'||j.success===false)throw 0;return j})})
+  .then(function(r){return r.json().then(function(j){if(!r.ok||j.success==='false'||j.success===false){try{console.warn('FormSubmit:',j.message)}catch(_){}throw 0}return j})})
   .then(function(){form.reset();st.textContent='Mensaje enviado. Te respondo pronto.';sendBtn.disabled=false})
-  .catch(function(){st.textContent='No se ha podido enviar. Escríbeme a '+CONTACT.email;sendBtn.disabled=false});
+  .catch(function(){st.innerHTML='No se ha podido enviar. <a href="mailto:'+CONTACT.email+'?subject='+encodeURIComponent('Mensaje desde tu portfolio')+'&body='+encodeURIComponent(f.message.value.trim())+'" style="color:var(--sand-d);text-decoration:underline">Escríbeme por correo</a> o por WhatsApp.';sendBtn.disabled=false});
 });
 </script>
 
