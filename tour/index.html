@@ -104,7 +104,9 @@ dl .res dd{color:var(--sand-d)}
 .ph{text-decoration:none;color:var(--ink);flex:0 0 230px;border:1px solid var(--line);border-radius:28px;aspect-ratio:9/16;background:var(--sand-l);display:grid;place-items:center;text-align:center;color:var(--mut);padding:14px;scroll-snap-align:start;position:relative}
 .ph b{display:block;font-family:var(--fi);font-weight:400;font-size:1.5rem;color:var(--ink)}
 .ph small{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-d);margin-bottom:10px}
-.ph .go{display:block;margin-top:14px;color:var(--sand-d);font-size:1.2rem}
+.ph .play{display:grid;place-items:center;width:64px;height:64px;margin:0 auto;border-radius:50%;border:1px solid var(--sand-d);background:rgba(255,255,255,.7);color:var(--sand-d);padding-left:3px;transition:background .2s,color .2s}
+.ph:hover .play{background:var(--sand-d);color:#fff}
+.ph small{margin:0}
 .ph{background:linear-gradient(rgba(255,255,255,.52),rgba(255,255,255,.52)),var(--bg) center/cover,var(--sand-l);overflow:hidden}
 .ph:hover{border-color:var(--sand-d)}
 
@@ -249,9 +251,9 @@ form .invalid{border-color:var(--sand-d)}
     <p class="tag up"><b>05</b><i></i>Mis piezas</p>
     <h2 class="big" style="margin-bottom:40px">Lo que he <em>creado</em>.</h2>
     <div class="reel">
-      <a class="ph" style="--bg:url(p1.jpg)" href="https://vm.tiktok.com/ZN8yVg9JF/" target="_blank" rel="noopener"><div><small>01 · TikTok</small><b>Ver en TikTok</b><span class="go">↗</span></div></a>
-          <a class="ph" style="--bg:url(p2.jpg)" href="https://www.instagram.com/reel/DfErWIKs8Zc/" target="_blank" rel="noopener"><div><small>02 · Instagram</small><b>Ver en Instagram</b><span class="go">↗</span></div></a>
-          <a class="ph" style="--bg:url(p3.jpg)" href="https://vm.tiktok.com/ZN8yVyHTs/" target="_blank" rel="noopener"><div><small>03 · TikTok</small><b>Ver en TikTok</b><span class="go">↗</span></div></a>
+      <a class="ph" aria-label="Ver vídeo 1 en TikTok" style="--bg:url(p1.jpg)" href="https://vm.tiktok.com/ZN8yVg9JF/" target="_blank" rel="noopener"><div><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></div></a>
+          <a class="ph" aria-label="Ver vídeo 2 en Instagram" style="--bg:url(p2.jpg)" href="https://www.instagram.com/reel/DfErWIKs8Zc/" target="_blank" rel="noopener"><div><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></div></a>
+          <a class="ph" aria-label="Ver vídeo 3 en TikTok" style="--bg:url(p3.jpg)" href="https://vm.tiktok.com/ZN8yVyHTs/" target="_blank" rel="noopener"><div><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></div></a>
     </div>
   </div></section>
 
