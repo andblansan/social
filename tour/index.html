@@ -1,0 +1,322 @@
+<title>Andrea Blanco · Social Media</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Archivo:wght@400;500&display=swap">
+<style>
+/* Concepto: tienda de moda silenciosa. Blanco, negro, mucho aire y tipografía Didona. Rosa arena solo en detalles pequeños (números, líneas, subrayados, hover). */
+:root{--w:#FFFFFF;--ink:#111111;--mut:#777777;--line:#E4E4E4;--sand:#C9968C;--sand-d:#9A5B51;--sand-l:#F6EAE6;
+--fd:'Bodoni Moda','Didot','Times New Roman',serif;--fb:'Archivo','Helvetica Neue',Arial,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--w);color:var(--ink);font-family:var(--fb);font-size:15px;line-height:1.6;font-weight:400;overflow:hidden}
+h1,h2,h3,p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sand-d);outline-offset:3px}
+.up{text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:500}
+.mut{color:var(--mut)}
+.pad{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+
+/* intro */
+#intro{position:fixed;inset:0;z-index:100;background:var(--w);display:grid;place-items:center;transition:opacity .8s ease,visibility 0s .8s}
+#intro.out{opacity:0;visibility:hidden;pointer-events:none}
+#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.count{position:relative;text-align:center}
+#num{font-family:var(--fd);font-weight:400;font-size:clamp(4.5rem,18vw,13rem);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;display:block;transition:transform .5s cubic-bezier(.2,.9,.3,1),opacity .5s ease}
+#num.boom{transform:scale(1.6);opacity:0}
+.count .up{display:block;margin-top:18px;color:var(--mut)}
+.meter{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--line)}
+.meter i{display:block;height:100%;width:0;background:var(--sand)}
+#skip{position:absolute;right:max(24px,env(safe-area-inset-right,0px));bottom:max(28px,env(safe-area-inset-bottom,0px));color:var(--mut)}
+#skip:hover{color:var(--ink)}
+#welcome{position:absolute;text-align:center;opacity:0;transition:opacity .6s ease .15s;pointer-events:none}
+#welcome h2{font-family:var(--fd);font-weight:400;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.02em;line-height:1}
+#welcome .up{display:block;margin-top:14px;color:var(--sand-d)}
+#welcome.on{opacity:1}
+
+/* barra y menú */
+.bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding-block:18px;background:linear-gradient(var(--w) 70%,rgba(255,255,255,0))}
+.logo{font-family:var(--fd);font-size:1.05rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+.menuBtn{display:flex;gap:10px;align-items:center}
+.menuBtn i{display:block;width:22px;height:1px;background:var(--ink);box-shadow:0 6px 0 var(--ink)}
+.menu{position:fixed;inset:0;z-index:50;background:var(--w);padding-top:calc(90px + env(safe-area-inset-top,0px));display:none}
+.menu.on{display:block}
+.menu a{display:flex;gap:18px;align-items:baseline;font-family:var(--fd);font-size:clamp(1.8rem,5vw,3rem);text-decoration:none;padding-block:8px;border-bottom:1px solid var(--line)}
+.menu a small{font-family:var(--fb);font-size:.72rem;color:var(--sand-d);letter-spacing:.14em}
+.menu a:hover{color:var(--sand-d)}
+.menu .close{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));right:max(24px,env(safe-area-inset-right,0px))}
+
+/* recorrido */
+#tour{position:fixed;inset:0;overflow-y:auto;scroll-snap-type:y proximity;scroll-behavior:smooth;visibility:hidden}
+#tour.on{visibility:visible}
+.s{min-height:100dvh;scroll-snap-align:start;display:grid;align-content:center;padding-block:110px 70px;border-bottom:1px solid var(--line)}
+.in{max-width:1100px;margin:0 auto;width:100%}
+.tag{display:flex;gap:14px;align-items:center;margin-bottom:34px}
+.tag b{color:var(--sand-d);font-weight:500}
+.tag i{display:block;width:40px;height:1px;background:var(--sand)}
+h1.big,h2.big{font-family:var(--fd);font-weight:400;letter-spacing:-.025em;line-height:1.02;font-size:clamp(2.4rem,6.6vw,5.4rem);max-width:15ch}
+h1.big em,h2.big em{font-style:italic;background:linear-gradient(transparent 88%,var(--sand) 88%,var(--sand) 94%,transparent 94%)}
+.lead{font-family:var(--fd);font-size:clamp(1.2rem,2.2vw,1.7rem);margin-top:26px;max-width:30ch;line-height:1.2}
+.facts{display:flex;flex-wrap:wrap;gap:30px 56px;margin-top:44px;padding-top:22px;border-top:1px solid var(--ink)}
+.facts div b{display:block;font-family:var(--fd);font-weight:400;font-size:clamp(1.8rem,3.6vw,2.8rem);line-height:1}
+.facts div span{color:var(--mut);font-size:.82rem}
+.cue{margin-top:40px;display:inline-flex;gap:10px;align-items:center;color:var(--mut)}
+.cue::after{content:"";width:1px;height:28px;background:var(--sand)}
+
+.me{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:56px;align-items:end}
+.pic{aspect-ratio:3/4;background:#EFEFEF;display:grid;place-items:center;text-align:center;color:var(--mut);padding:20px}
+.me p{font-family:var(--fd);font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.25;margin-bottom:16px;max-width:34ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{border:1px solid var(--line);padding:5px 12px;font-size:.78rem}
+@media (max-width:720px){.me{grid-template-columns:1fr;gap:28px}.pic{max-width:260px}}
+
+.brand{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:56px;align-items:start}
+.brand h3{font-family:var(--fd);font-weight:400;font-size:clamp(1.8rem,3.6vw,2.8rem);line-height:1.05;margin-block:10px 14px}
+.tabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.t{padding-block:10px;color:var(--mut);border-bottom:2px solid transparent;margin-bottom:-1px}
+.t[aria-selected="true"]{color:var(--ink);border-color:var(--sand)}
+dl{margin:0}
+dl>div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+dt{padding-top:4px}
+dd{margin:0;font-family:var(--fd);font-size:1.25rem;line-height:1.25}
+dl .res dd{color:var(--sand-d)}
+@media (max-width:820px){.brand{grid-template-columns:1fr;gap:28px}}
+@media (max-width:520px){dl>div{grid-template-columns:1fr;gap:2px}}
+
+.how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.qs{display:grid}
+.q{text-align:left;padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:baseline;font-family:var(--fd);font-size:1.3rem;color:var(--mut)}
+.q small{font-family:var(--fb);font-size:.7rem;color:var(--sand-d);letter-spacing:.1em}
+.q[aria-selected="true"]{color:var(--ink)}
+.q:hover{color:var(--ink)}
+.ans{border-left:1px solid var(--sand);padding-left:28px;min-height:150px}
+.ans p{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.15;max-width:22ch}
+@media (max-width:820px){.how{grid-template-columns:1fr;gap:26px}.ans{border-left:0;border-top:1px solid var(--sand);padding:20px 0 0}}
+
+.reel{display:flex;gap:20px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x proximity}
+.ph{flex:0 0 190px;aspect-ratio:9/16;background:#EFEFEF;display:grid;place-items:center;text-align:center;color:var(--mut);padding:14px;scroll-snap-align:start;position:relative}
+.ph b{display:block;font-family:var(--fd);font-weight:400;font-style:italic;font-size:1.2rem;color:var(--ink)}
+.ph::after{content:"";position:absolute;left:14px;bottom:14px;width:26px;height:1px;background:var(--sand)}
+
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--ink);margin-top:40px}
+.svc article{padding:22px 26px 22px 0}
+.svc h3{font-family:var(--fd);font-weight:400;font-size:1.7rem;margin-block:8px 6px}
+.svc p{color:var(--mut)}
+.svc b{color:var(--sand-d);font-weight:500}
+
+.mail{font-family:var(--fd);font-size:clamp(1.6rem,5vw,3.6rem);word-break:break-all;user-select:all;display:block;margin-top:30px;line-height:1.1}
+.btn{display:inline-block;margin-top:26px;background:var(--ink);color:#fff;padding:14px 28px}
+.btn:hover{background:var(--sand-d)}
+#ok{margin-left:14px;color:var(--sand-d)}
+
+.dots{position:fixed;right:max(18px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:35;display:grid;gap:12px}
+.dots button{width:7px;height:7px;border-radius:50%;border:1px solid var(--ink);background:transparent}
+.dots button[aria-current="true"]{background:var(--sand);border-color:var(--sand)}
+@media (max-width:720px){.dots{display:none}}
+@media (prefers-reduced-motion:reduce){#tour{scroll-behavior:auto}}
+</style>
+
+<div id="intro" aria-label="Bienvenida">
+  <canvas id="fx"></canvas>
+  <div class="count"><span id="num" aria-live="off">0</span><span class="up">Social Media · Content Strategy</span></div>
+  <div id="welcome"><h2>Andrea Blanco</h2><span class="up">Bienvenida a mi portfolio</span></div>
+  <div class="meter"><i id="bar"></i></div>
+  <button id="skip" class="up">Saltar</button>
+</div>
+
+<header class="bar pad"><a class="logo" href="#s1">Andrea Blanco</a><button class="menuBtn up" id="menuBtn" aria-expanded="false">Menú <i></i></button></header>
+
+<nav class="menu pad" id="menu" aria-label="Secciones"><div class="in">
+  <button class="close up" id="menuClose">Cerrar ✕</button>
+  <a href="#s1"><small>01</small>Qué te ofrezco</a><a href="#s2"><small>02</small>Quién soy</a><a href="#s3"><small>03</small>Casos de éxito</a>
+  <a href="#s4"><small>04</small>Cómo trabajo</a><a href="#s5"><small>05</small>Mis piezas</a><a href="#s6"><small>06</small>Servicios</a><a href="#s7"><small>07</small>Contacto</a>
+</div></nav>
+
+<div class="dots" id="dots" aria-hidden="true"></div>
+
+<main id="tour">
+  <section class="s pad" id="s1"><div class="in">
+    <p class="tag up"><b>01</b><i></i>Qué te ofrezco</p>
+    <h1 class="big">No solo creo contenido. Decido <em>qué contenido merece la pena crear.</em></h1>
+    <p class="lead">Hago que la gente hable de tu marca.</p>
+    <div class="facts">
+      <div><b data-count="500" data-pre="+" data-suf="K">+500K</b><span>en una sola pieza</span></div>
+      <div><b data-count="50000" data-pre="+">+50.000</b><span>seguidores nuevos</span></div>
+      <div><b>Finanzas</b><span>un sector difícil en redes</span></div>
+    </div>
+    <span class="cue up">Desliza</span>
+  </div></section>
+
+  <section class="s pad" id="s2"><div class="in">
+    <p class="tag up"><b>02</b><i></i>Quién soy</p>
+    <div class="me">
+      <div class="pic up">Tu foto aquí</div>
+      <div>
+        <h2 class="big" style="font-size:clamp(2rem,4.6vw,3.6rem)">Community Manager, Social Media y Content Strategy.</h2>
+        <p style="margin-top:22px">Entré en 2025 grabando y editando. Hoy analizo, planteo la estrategia, escribo los guiones y mido el resultado.</p>
+        <p>Te muestro mi trayectoria en finanzas e inversión, uno de los sectores más difíciles para crecer en redes.</p>
+        <div class="chips"><span>Instagram</span><span>TikTok</span><span>YouTube Shorts</span><span>Telegram</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="s pad" id="s3"><div class="in">
+    <p class="tag up"><b>03</b><i></i>Casos de éxito</p>
+    <div class="brand">
+      <div>
+        <span class="up mut">Marca</span>
+        <h3>Traders Business School</h3>
+        <p class="mut">Escuela online de inversión. Gestión de Instagram, TikTok, YouTube Shorts y Telegram desde marzo de 2025.</p>
+      </div>
+      <div><div class="tabs" id="ct" role="tablist"></div><div id="cb"></div></div>
+    </div>
+  </div></section>
+
+  <section class="s pad" id="s4"><div class="in">
+    <p class="tag up"><b>04</b><i></i>Cómo trabajo</p>
+    <h2 class="big" style="margin-bottom:40px">Empiezo por <em>preguntas</em>, no por ideas.</h2>
+    <div class="how"><div class="qs" id="qs"></div><div class="ans" id="ans"></div></div>
+  </div></section>
+
+  <section class="s pad" id="s5"><div class="in">
+    <p class="tag up"><b>05</b><i></i>Mis piezas</p>
+    <h2 class="big" style="margin-bottom:40px">Lo que he <em>creado</em>.</h2>
+    <div class="reel">
+      <div class="ph"><div><b>Vídeo 1</b>Tu pieza aquí</div></div>
+      <div class="ph"><div><b>Vídeo 2</b>Tu pieza aquí</div></div>
+      <div class="ph"><div><b>Vídeo 3</b>Tu pieza aquí</div></div>
+      <div class="ph"><div><b>Vídeo 4</b>Tu pieza aquí</div></div>
+    </div>
+  </div></section>
+
+  <section class="s pad" id="s6"><div class="in">
+    <p class="tag up"><b>06</b><i></i>Servicios</p>
+    <h2 class="big">Te ayudo a que tus redes sean <em>una fuente de ingresos</em>.</h2>
+    <div class="svc">
+      <article><b class="up">01</b><h3>Auditoría de redes</h3><p>Qué funciona, qué no y por qué.</p></article>
+      <article><b class="up">02</b><h3>Plan de contenido</h3><p>Estrategia, ideas y guiones listos para grabar.</p></article>
+      <article><b class="up">03</b><h3>Mejora continua</h3><p>Informe periódico y ajustes sobre la marcha.</p></article>
+    </div>
+  </div></section>
+
+  <section class="s pad" id="s7"><div class="in">
+    <p class="tag up"><b>07</b><i></i>Contacto</p>
+    <h2 class="big">Cuéntame qué necesita <em>tu marca</em>.</h2>
+    <span class="mail" id="mail">andblasan@gmail.com</span>
+    <button class="btn up" id="cp">Copiar correo</button><span id="ok" class="up" aria-live="polite"></span>
+  </div></section>
+</main>
+
+<script>
+var $=function(s){return document.querySelector(s)};
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function fmt(n){return n>=10000?n.toLocaleString('es-ES'):String(n)}
+
+/* ---------- Intro ---------- */
+var intro=$('#intro'),tour=$('#tour'),num=$('#num'),bar=$('#bar'),fx=$('#fx'),ctx=fx.getContext('2d');
+var done=false,raf=0;
+function finish(){
+  if(done)return;done=true;cancelAnimationFrame(raf);
+  intro.classList.add('out');tour.classList.add('on');tour.focus&&tour.setAttribute('tabindex','-1');
+  setTimeout(function(){intro.style.display='none'},900);
+  animateFacts();
+}
+function size(){var d=window.devicePixelRatio||1;fx.width=innerWidth*d;fx.height=innerHeight*d;ctx.setTransform(d,0,0,d,0,0)}
+function boom(){
+  size();
+  var cx=innerWidth/2,cy=innerHeight/2,ps=[],cols=['#C9968C','#9A5B51','#111111','#E9C9C1'];
+  for(var i=0;i<190;i++){var a=Math.random()*Math.PI*2,v=3+Math.random()*13;
+    ps.push({x:cx,y:cy,vx:Math.cos(a)*v,vy:Math.sin(a)*v,r:1+Math.random()*3,c:cols[i%4],l:1,w:Math.random()>.5})}
+  var t0=performance.now();
+  (function step(now){
+    var k=Math.max(0,(now-t0)/1300);ctx.clearRect(0,0,innerWidth,innerHeight);
+    ps.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.vx*=.965;p.vy*=.965;p.vy+=.08;p.l=Math.max(0,1-k);
+      ctx.globalAlpha=p.l;ctx.fillStyle=p.c;
+      if(p.w){ctx.fillRect(p.x,p.y,p.r*2.4,p.r*.7)}else{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill()}});
+    ctx.globalAlpha=1;
+    var ring=Math.min(1,k*1.6);ctx.strokeStyle='#C9968C';ctx.globalAlpha=1-ring;ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(cx,cy,ring*Math.max(innerWidth,innerHeight)*.6,0,7);ctx.stroke();ctx.globalAlpha=1;
+    if(k<1&&!done)requestAnimationFrame(step);else ctx.clearRect(0,0,innerWidth,innerHeight);
+  })(t0);
+}
+function play(){
+  var T=3400,t0=performance.now(),target=100000;
+  (function tick(now){
+    if(done)return;
+    var k=Math.min(1,(now-t0)/T),e=Math.pow(k,3.2);
+    num.textContent=fmt(Math.round(e*target));bar.style.width=(k*100)+'%';
+    if(k<1){raf=requestAnimationFrame(tick);return}
+    num.textContent=fmt(target);
+    setTimeout(function(){
+      if(done)return;num.classList.add('boom');boom();
+      setTimeout(function(){if(!done)$('#welcome').classList.add('on')},350);
+      setTimeout(finish,2100);
+    },250);
+  })(t0);
+}
+$('#skip').addEventListener('click',finish);
+if(reduce){finish()}else{play()}
+
+/* ---------- Números del hero ---------- */
+function animateFacts(){
+  if(reduce)return;
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var end=+el.dataset.count,pre=el.dataset.pre||'',suf=el.dataset.suf||'',t0=performance.now();
+    (function s(now){var k=Math.min(1,(now-t0)/1400),e=1-Math.pow(1-k,3);
+      el.textContent=pre+fmt(Math.round(end*e))+suf;if(k<1)requestAnimationFrame(s)})(t0);
+  });
+}
+
+/* ---------- Menú y puntos ---------- */
+var menu=$('#menu'),mb=$('#menuBtn');
+function openMenu(o){menu.classList.toggle('on',o);mb.setAttribute('aria-expanded',o)}
+mb.addEventListener('click',function(){openMenu(true)});
+$('#menuClose').addEventListener('click',function(){openMenu(false)});
+menu.addEventListener('click',function(e){if(e.target.closest('a'))openMenu(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')openMenu(false)});
+var secs=Array.prototype.slice.call(document.querySelectorAll('.s')),dots=$('#dots');
+secs.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Ir a la sección '+(i+1));
+  b.addEventListener('click',function(){s.scrollIntoView({behavior:reduce?'auto':'smooth'})});dots.appendChild(b)});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){var i=secs.indexOf(e.target);dots.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-current',i===j)})}})},{root:tour,threshold:.55});
+secs.forEach(function(s){io.observe(s)});
+document.querySelectorAll('a[href^="#s"]').forEach(function(a){a.addEventListener('click',function(e){
+  var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:reduce?'auto':'smooth'})}})});
+
+/* ---------- Casos ---------- */
+var C={
+ 'TikTok':[['Problema','Formatos que dejaban de funcionar. Vídeos estancados en 5–6K.'],['Investigué','Si era cosa nuestra o de la plataforma, y qué fallaba: la historia, el formato, el hook…'],['Probé','Nuevos formatos, nuevas tendencias, nuevas historias, hasta dar con la clave.'],['Resultado','Piezas de más de 500K.'],['Demuestra','Investigación, hipótesis y optimización.']],
+ 'Instagram':[['Problema','Cuenta financiera restringida más de tres meses.'],['Investigué','Qué claims, hooks y estructuras ponían en riesgo la cuenta.'],['Probé','Ángulos contraintuitivos, rankings y varias versiones de hook.'],['Resultado','Más de 500K reproducciones con la restricción activa.'],['Demuestra','Adaptación y gestión de riesgo.']]
+};
+var ct=$('#ct'),cb=$('#cb'),keys=Object.keys(C);
+keys.forEach(function(k,i){var b=document.createElement('button');b.className='t up';b.setAttribute('role','tab');b.textContent=k;b.dataset.k=k;ct.appendChild(b)});
+function showCase(k){
+  ct.querySelectorAll('.t').forEach(function(b){b.setAttribute('aria-selected',b.dataset.k===k)});
+  cb.innerHTML='<dl>'+C[k].map(function(r){return '<div class="'+(r[0]==='Resultado'?'res':'')+'"><dt class="up mut">'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('')+'</dl>';
+}
+ct.addEventListener('click',function(e){var b=e.target.closest('.t');if(b)showCase(b.dataset.k)});showCase('TikTok');
+
+/* ---------- Cómo trabajo ---------- */
+var Q=[
+ ['¿Quién eres?','Conozco la marca: qué ofrece, cómo habla y qué quiere conseguir.'],
+ ['¿Qué necesitas?','Traduzco tu objetivo de negocio: alcance, autoridad o ventas.'],
+ ['¿A quién te diriges?','Defino a tu público: qué busca, qué le preocupa y qué pregunta.'],
+ ['¿Contra quién compites?','Analizo qué hace tu competencia, qué le funciona y qué deja sin cubrir.'],
+ ['¿Qué necesidades podemos cubrir?','Cruzo lo que necesita tu público con lo que nadie le está dando.'],
+ ['¿Qué vamos a contar?','Elijo los temas y las ideas que merecen la pena.'],
+ ['¿Cómo lo vamos a contar?','Formato, hook y guion, con varias versiones para probar.'],
+ ['¿Ha funcionado?','Medimos, sacamos conclusiones y decidimos qué mantener, mejorar, probar o pausar.']
+];
+var qs=$('#qs'),ans=$('#ans');
+Q.forEach(function(q,i){var b=document.createElement('button');b.className='q';b.dataset.i=i;b.innerHTML='<small>'+String(i+1).padStart(2,'0')+'</small>'+q[0];qs.appendChild(b)});
+function showQ(i){qs.querySelectorAll('.q').forEach(function(b){b.setAttribute('aria-selected',+b.dataset.i===i)});ans.innerHTML='<p>'+Q[i][1]+'</p>'}
+qs.addEventListener('click',function(e){var b=e.target.closest('.q');if(b)showQ(+b.dataset.i)});
+qs.addEventListener('mouseover',function(e){var b=e.target.closest('.q');if(b)showQ(+b.dataset.i)});
+showQ(0);
+
+/* ---------- Contacto ---------- */
+$('#cp').addEventListener('click',function(){
+  var ok=$('#ok');function d(t){ok.textContent=t;setTimeout(function(){ok.textContent=''},2000)}
+  function sel(){var r=document.createRange();r.selectNodeContents($('#mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);d('Selecciónalo y copia')}
+  try{navigator.clipboard.writeText($('#mail').textContent).then(function(){d('Copiado')},sel)}catch(e){sel()}
+});
+</script>
