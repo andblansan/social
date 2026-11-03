@@ -401,9 +401,9 @@ form.addEventListener('submit',function(e){
   if(!ok){st.textContent='Revisa los campos marcados';return}
   if($('#f-honey').value){return}
   sendBtn.disabled=true;st.textContent='Enviando…';
-  fetch('https://formsubmit.co/ajax/'+CONTACT.email,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({name:f.name.value.trim(),email:f.email.value.trim(),message:f.message.value.trim(),_subject:'Nuevo mensaje desde tu portfolio',_captcha:'false',_template:'table'})})
-  .then(function(r){return r.json().then(function(j){if(!r.ok||j.success==='false'||j.success===false){try{console.warn('FormSubmit:',j.message)}catch(_){}throw 0}return j})})
+  fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({access_key:'2f52ddce-12e6-4610-911b-fc062f94d802',subject:'Nuevo mensaje desde tu portfolio',from_name:'Portfolio Andrea Blanco',name:f.name.value.trim(),email:f.email.value.trim(),message:f.message.value.trim(),botcheck:''})})
+  .then(function(r){return r.json().then(function(j){if(!r.ok||!j.success){try{console.warn('Web3Forms:',j.message)}catch(_){}throw 0}return j})})
   .then(function(){form.reset();st.textContent='Mensaje enviado. Te respondo pronto.';sendBtn.disabled=false})
   .catch(function(){st.innerHTML='No se ha podido enviar. <a href="mailto:'+CONTACT.email+'?subject='+encodeURIComponent('Mensaje desde tu portfolio')+'&body='+encodeURIComponent(f.message.value.trim())+'" style="color:var(--sand-d);text-decoration:underline">Escríbeme por correo</a> o por WhatsApp.';sendBtn.disabled=false});
 });
