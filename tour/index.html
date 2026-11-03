@@ -66,7 +66,8 @@ h1.big em,h2.big em{font-family:var(--fi);font-style:italic;font-weight:400;colo
 @media (prefers-reduced-motion:reduce){.cue i{animation:none;transform:translateY(8px);opacity:1}}
 
 .me{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:56px;align-items:end}
-.pic{aspect-ratio:3/4;background:#EFEFEF;display:grid;place-items:center;text-align:center;color:var(--mut);padding:20px}
+.pic{aspect-ratio:3/4;background:var(--sand-l);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;padding:0}
+.pic img{display:block;height:96%;width:auto;max-width:100%;object-fit:contain;object-position:bottom}
 .me p{font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.8;margin-bottom:18px;max-width:44ch}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .chips span{border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:.78rem}
@@ -202,7 +203,7 @@ form .invalid{border-color:var(--sand-d)}
   <section class="s pad" id="s2"><div class="in">
     <p class="tag up"><b>02</b><i></i>Quién soy</p>
     <div class="me">
-      <div class="pic up">Tu foto aquí</div>
+      <div class="pic up"><img src="andrea.png" alt="Andrea Blanco" width="443" height="889"></div>
       <div>
         <h2 class="big" style="font-size:clamp(1.4rem,2.6vw,2rem)">Community Manager, Social Media y Content Strategy.</h2>
         <p style="margin-top:22px">Desde 2025 analizo, planteo la estrategia, llevo a cabo y mido resultados.</p>
