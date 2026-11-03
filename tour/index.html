@@ -26,13 +26,13 @@ a{color:inherit}
 .count{transition:opacity .35s ease;z-index:3}
 .count.gone{opacity:0}
 #welcome{z-index:2}
-#intro.tear{background:var(--sand-l);transition:opacity .8s ease,visibility 0s .8s}
+#intro.tear{background:#FBF8F5;transition:opacity .8s ease,visibility 0s .8s}
 .rip{position:absolute;inset:0;z-index:4;pointer-events:none}
-.rip i{position:absolute;inset:0;background:#fff;transition:transform 1.1s cubic-bezier(.55,.02,.85,.5)}
+.rip i{position:absolute;inset:0;background:#fff;transition:transform 1.6s cubic-bezier(.65,0,.25,1)}
 .rip .l{transform-origin:0 100%}.rip .r{transform-origin:100% 100%}
-.rip{filter:drop-shadow(0 0 7px rgba(0,0,0,.28))}
-.rip.go .l{transform:translateX(-62%) rotate(-7deg)}
-.rip.go .r{transform:translateX(62%) rotate(7deg)}
+.rip{filter:drop-shadow(0 0 14px rgba(0,0,0,.07))}
+.rip.go .l{transform:translateX(-102%)}
+.rip.go .r{transform:translateX(102%)}
 .count .up{display:block;margin-top:18px;color:var(--mut)}
 .meter{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--line)}
 .meter i{display:block;height:100%;width:0;background:var(--sand)}
@@ -306,7 +306,7 @@ function finish(){
 }
 function size(){var d=window.devicePixelRatio||1;fx.width=innerWidth*d;fx.height=innerHeight*d;ctx.setTransform(d,0,0,d,0,0)}
 function tear(){
-  var n=22,xs=[],i;for(i=0;i<=n;i++){xs.push(50+(Math.random()-.5)*(i%2?7:3.5))}
+  var n=14,xs=[],i;for(i=0;i<=n;i++){xs.push(50+(Math.random()-.5)*(i%2?1.6:.8))}
   var L=['0 0'],R=[];
   for(i=0;i<=n;i++){L.push(xs[i].toFixed(1)+'% '+(i*100/n).toFixed(1)+'%')}
   L.push('0 100%');
@@ -316,7 +316,7 @@ function tear(){
   rip.innerHTML='<i class="l" style="clip-path:polygon('+L.join(',')+')"></i><i class="r" style="clip-path:polygon('+R.join(',')+')"></i>';
   intro.appendChild(rip);intro.classList.add('tear');
   void rip.offsetWidth;
-  setTimeout(function(){rip.classList.add('go')},220);
+  setTimeout(function(){rip.classList.add('go')},350);
 }
 function play(){
   var T=2300,t0=performance.now(),target=50000;
@@ -328,8 +328,8 @@ function play(){
     num.textContent=fmt(target);
     setTimeout(function(){
       if(done)return;document.querySelector('.count').classList.add('gone');tear();
-      setTimeout(function(){if(!done)$('#welcome').classList.add('on')},500);
-      setTimeout(finish,2400);
+      setTimeout(function(){if(!done)$('#welcome').classList.add('on')},900);
+      setTimeout(finish,3200);
     },250);
   })(t0);
 }
